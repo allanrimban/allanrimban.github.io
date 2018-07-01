@@ -2,5 +2,12 @@
 layout: default
 title: Hank Quinlan, Horrible Cop
 ---
-
 <h1>My warmup map</h1>
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/allanrimban/cjj2gqy52071o2rmil1xscmfk'
+});
+</script>
