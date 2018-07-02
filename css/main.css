@@ -23,9 +23,9 @@ h1 {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
-h2 {
+.my-map {
     font-size: 1em;
-    font-family: 'Courier New', 'Courier', 'monospace';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     line-height: 1;
 }
 p {
