@@ -1,9 +1,29 @@
----
-layout: default
-title: Hank Quinlan, Horrible Cop
----
-<h1>My warmup map</h1>
-<div id='map' style='width: 400px; height: 300px;'></div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample Map</title>
+		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">			
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+      <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	</head>
+
+<body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/cv">CV</a></li>
+        <li><a href="/maps/index.html">My Maps</a></li>
+    </ul>
+</nav>
+<div>
+    <h1>My warmup map</h1>
+</div>
+<!-- create a div for the mapbox basemap -->
+<div id='map' style='width: 400px; height: 300px;' align='center'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug';
 var map = new mapboxgl.Map({
@@ -11,3 +31,11 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/allanrimban/cjj2gqy52071o2rmil1xscmfk'
 });
 </script>
+</body>
+<footer>
+    <ul>
+        <li><a href="mailto:allanrimban@gmail.com">email</a></li>
+        <li><a href="https://github.com/sushirittoman">github.com/sushirittoman</a></li>
+    </ul>
+</footer>
+</html>
