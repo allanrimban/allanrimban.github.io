@@ -7,7 +7,10 @@
 		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
 		<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-      <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+        
+        </style>
 	</head>
 
 <body>
@@ -22,8 +25,12 @@
 <div>
     <h1>My warmup map</h1>
 </div>
+
 <!-- create a div for the mapbox basemap -->
-<div id='map' style='width: 400px; height: 300px;' align='center'></div>
+<div class='map' style='width: 400px height: 300px;'></div>
+
+    
+<!-- inserts the mapbox basemap into the map div -->
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug';
 var map = new mapboxgl.Map({
@@ -32,6 +39,9 @@ var map = new mapboxgl.Map({
 });
 </script>
 </body>
+    
+    
+<!-- additional things like email etc. -->
 <footer>
     <ul>
         <li><a href="mailto:allanrimban@gmail.com">email</a></li>
