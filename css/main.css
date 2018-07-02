@@ -43,6 +43,7 @@ ul.posts li {
 }
 
 .map {
-    margin: 60px auto;
+    position: absolute;
+    left: 0px;
     padding: 8px 12px;
 }
