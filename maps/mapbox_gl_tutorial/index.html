@@ -449,9 +449,9 @@
                 //By default the image for your custom marker willl be anchored
                 //by its center. Adjust the position accordingly.
                 //Create the custom markers, set their position and add to map
-                new mapboxgl.Marker(el, { offset: [0, -23]})
+                new mapboxgl.Marker(el, {offset: [0, -23]})
                     .setLngLat(marker.geometry.coordinates)
-                    .addToMap(map);
+                    .addTo(map);
 
                 //A new event listener that replaces the one below where the view flies to the position on the map.
                 el.addEventListener('click', function(e) {
@@ -511,7 +511,7 @@
             })        
             
             
-            //The following are the functions needed to make the map interactive (flyToStore), to create the popup (createPopUp) and to list the data in the sidebar. Note: the tutorial did NOT say where to put the flyToStore and the createPopUp functions. NOTE: ALSO IT'S WEIRD, THE TUTORIAL SAID TO DELETE THE EVENT THAT LISTENED TO CLICKS TO ADD THE CUSTOM MARKERS, BUT IN THE SOURCE CODE, THIS SHIT WAS NOT DELETED, WTH!!!
+            //The following are the functions needed to make the map interactive (flyToStore), to create the popup (createPopUp) and to list the data in the sidebar. Note: the tutorial did NOT say where to put the flyToStore and the createPopUp functions. NOTE: ALSO IT'S WEIRD, THE TUTORIAL SAID TO DELETE THE EVENT THAT LISTENED TO CLICKS TO ADD THE CUSTOM MARKERS, BUT IN THE SOURCE CODE, THIS SHIT WAS NOT DELETED, WTD!!!
             
             */            
             function flyToStore(currentFeature) {
