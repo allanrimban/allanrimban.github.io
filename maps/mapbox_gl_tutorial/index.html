@@ -3,6 +3,7 @@
     <head>
         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+        <script src="sweetgreens.geojson"></script>
         <div class='sidebar pad2'>Listing</div>
         <div id='map' class='map pad2'>Map</div>
         <style>
@@ -52,6 +53,28 @@ gets 2/3 of the page. You can adjust this to your personal liking. */
               center: [-77.034084, 38.909671],
               // initial zoom
               zoom: 14
+            });
+            
+            //load the sweetgreens geojson
+            var stores = {sweetgreens.geojson};
+            
+            //add the geojson to the map
+            map.on('load', function(e) {
+            
+            // Add the data to your map as a layer
+            map.addLayer({
+                id: 'locations',
+                type: 'symbol',
+                // Add a GeoJSON source containing place coordinates and information.
+                source: {
+                  type: 'geojson',
+                  data: stores
+                },
+                layout: {
+                  'icon-image': 'restaurant-15',
+                  'icon-allow-overlap': true,
+                }
+              });
             });
 
         </script>
