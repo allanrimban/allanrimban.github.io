@@ -96,7 +96,7 @@
                     
                     //converting 0-23 hour to AMPM format
                     var ampm = hour >=12 ? 'PM' : 'AM';
-                    var hour12 = hour % ? hour % 12 : 12;
+                    var hour12 = hour % hour % 12 : 12;
                     
                     //update text in the UT
                     document.getElementById('active-hour').innerText = hour12 + ampm;
