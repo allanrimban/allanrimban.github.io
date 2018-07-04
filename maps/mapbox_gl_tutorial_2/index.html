@@ -22,6 +22,18 @@
         <div id='console'>
             <h1>Motor vehicle collisions</h1>
             <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths in NYC, Jan 2016</a></p>
+            <div class='session'>
+                <h2>Casualty</h2>
+                <div class='row colors'></div>
+                <div class='row labels'>
+                    <div class='label'>0</div>
+                    <div class='label'>1</div>
+                    <div class='label'>2</div>
+                    <div class='label'>3</div>
+                    <div class='label'>4</div>
+                    <div class='label'>5</div>
+                </div>
+            </div>
         </div>
         
         <script>
@@ -35,6 +47,40 @@
               zoom: 12
             });
             
+            //Load the data, here we go
+            map.on('load', function(){
+                map.addLayer({
+                    id: 'collisions',
+                    type: 'circle',
+                    source: {
+                        type: 'geojson',
+                        data: 'collisions1601.geojson'
+                    }
+                    paint: {
+                        'circle-radius': [
+                            'interpolate',
+                            ['linear'],
+                            ['number', ['get','Casualty']],
+                            0, 4,
+                            5, 24
+                        ],
+                        'circle-color': [
+                            'interpolate',['linear'],
+                            ['number', ['get','Casualty']
+                            ],
+                            0, '#2DC4B2',
+                            1, '#3BB3C3',
+                            2, '#669EC4',
+                            3, '#8B88B6',
+                            4, '#A2719B',
+                            5, '#AA5E79'
+
+                        ],
+                        'circle-opacity': 0.8
+                    
+                }                
+                }, 'admin-2-boundaries-dispute');
+            });
             
 
         </script>
