@@ -34,6 +34,10 @@
                     <div class='label'>5</div>
                 </div>
             </div>
+            <div class='session' id='sliderbar'>
+                <h2>Hour: <label id='active-hour'>12PM</label></h2>
+                <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+            </div>
         </div>
         
         <script>
@@ -83,6 +87,21 @@
                     filter: ['==', ['number', ['get', 'Hour']], 12]
                     
                 }, 'admin-2-boundaries-dispute');
+                
+                //Connecting an event listener to the slider
+                document.getElementById('slider').addEventListener('input', function(e) {
+                    var hour = parseInt(e.target.value);
+                    //update the map
+                    map.setFilter('collisions', ['==', ['number', ['get, 'Hour'']], hour]);
+                    
+                    //converting 0-23 hour to AMPM format
+                    var ampm = hour >=12 ? 'PM' : 'AM';
+                    var hour12 = hour % ? hour % 12 : 12;
+                    
+                    //update text in the UT
+                    document.getElementById('active-hour').innerText = hour12 + ampm;
+                    
+                });
             });
             
 
