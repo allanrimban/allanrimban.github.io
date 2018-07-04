@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset='utf-8' />
+        <title>NYC motor vehicle collisions</title>
+        <meta name='viewport' content='initial-scale=1, maximum-scale=1,user-scalable=no' />
+        
+        //link to the mapbox gl js library
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+        
+        //link to the mapbox styles
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+        
+        //link to the style for the project
+        <link href="style.css" rel="stylesheet" type="text/css">
+        
+    </head>
+    <body>
+        <div id='map'></div>
+        <div id='console'></div>
+            <h1>Motor vehicle collisions</h1>
+            <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths in NYC, Jan 2016</a></p>
+        
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug';
+            
+            //Suffice it to say that this is how we call a mapbox basemap
+            var map = new mapboxgl.Map({
+              container: 'map', // container element id
+              style: 'mapbox://styles/mapbox/light-v9',
+              center: [-74.0059, 40.7128], // initial map center in [lon, lat]
+              zoom: 12
+            });
+            
+            
+
+        </script>
+    </body>
+</html>
