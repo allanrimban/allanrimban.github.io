@@ -65,6 +65,11 @@
             
             //Load the data, here we go
             map.on('load', function(){
+                
+                //NOTE: THE TUTORIAL FORGOT TO TELL US ABOUT SETTING FILTERHOUR AND FILTERDAY VARIABLES IN THE ADD INTERACTIVITY SECTION!!!
+                var filterHour = ['==', ['number', ['get', 'Hour']], 12];
+                var filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+                
                 map.addLayer({
                     id: 'collisions',
                     type: 'circle',
