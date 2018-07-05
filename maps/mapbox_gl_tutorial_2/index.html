@@ -106,7 +106,7 @@
                 }, 'admin-2-boundaries-dispute');
                 
                 //Connecting an event listener to the slider
-                document.getElementById('slider').addEventListener('in  put', function(e) {
+                document.getElementById('slider').addEventListener('input', function(e) {
                         var hour = parseInt(e.target.value);
                         //update the map
                         map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
