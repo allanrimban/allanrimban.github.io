@@ -123,7 +123,7 @@
                     } else if (day === 'weekday') {
                         filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], false, true];
                     } else if (day === 'weekend') {
-                        filterDay = ['match'. ['get', 'Day'], ['Sat', 'Sun'], true, true];
+                        filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], true, true];
                     } else {
                         console.log('error');
                     }
