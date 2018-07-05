@@ -121,7 +121,7 @@
                 });
                 
                 //Adding a "by day" filter
-                document.getElementById('filters').addEventListener('c  hange', function(e) {
+                document.getElementById('filters').addEventListener('change', function(e) {
                     var day = e.target.value;
                     if (day === 'all') {
                         filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
