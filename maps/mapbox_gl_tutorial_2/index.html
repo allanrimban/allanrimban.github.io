@@ -101,16 +101,33 @@
                         'circle-opacity': 0.8
                     
                     },
+                    /*NOTE: IN THE TUTORIAL FILTER HERE IS WITHOUT SINGLE QUOTES!!! BUT IT WOULDN'T WORK, SO INSPECTED THE SOURCE CODE AND FOUND THAT THE FILTER SHOULD HAVE SINGLE QUOTES!!!
+                    
                     'filter': ['==', ['number', ['get', 'Hour']], 12]
+                    
+                    NOTE: I COMMENTED THIS FILTER THING OUT TO CREATE A NEW FILTER THAT COMBINES HOUR AND DAY*/
+                    
+                    //This is for combining the filters
+                    'filter' = ['all', filterHour, filterDay]
                     
                 }, 'admin-2-boundaries-dispute');
                 
                 //Connecting an event listener to the slider
                 document.getElementById('slider').addEventListener('input', function(e) {
                         var hour = parseInt(e.target.value);
+                        
+                        /* Commenting this out to enable combining filters
+                        
                         //update the map
                         map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
 
+                        
+                        */
+                        
+                        //For combining the filters
+                        filterHour = ['==', ['number', ['get', 'Hour']], hour];
+                        map.setFilter('collisions', ['all', filterHour, filterDay]);
+                    
                         //converting 0-23 hour to AMPM format
                         var ampm = hour >=12 ? 'PM' : 'AM';
                         var hour12 = hour % 12 ? hour % 12 : 12;
@@ -124,6 +141,8 @@
                 document.getElementById('filters').addEventListener('change', function(e) {
                     var day = e.target.value;
                     if (day === 'all') {
+                        
+                        //'null' would not work for combining filters
                         filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
                     } else if (day === 'weekday') {
                         filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], false, true];
@@ -132,7 +151,13 @@
                     } else {
                         console.log('error');
                     }
+                    
+                    /* NOTE: COMMENTING THIS OUT TO CHANGE IT TO ALLOW COMBINING OF FILTERS
                     map.setFilter('collisions', ['all', filterDay]);
+                    */
+                    
+                    map.setFilter('collisions', ['all', filterHour, filterDay]);
+                    
                 });
                 
             });
