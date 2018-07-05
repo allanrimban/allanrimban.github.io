@@ -38,6 +38,18 @@
                 <h2>Hour: <label id='active-hour'>12PM</label></h2>
                 <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
             </div>
+            <div class='session'>
+                <h2>Day of the week</h2>
+                <div class='row' id='filters'>
+                    <!--THE INPUT ELEMENT, WHICH ALLOWS US TO INSERT A RADIO BUTTON, APPARENTLY IS THE MOST IMPORTANT FORM ELEMENT ACCORDING TO W3SCHOOLS.COM-->
+                    <input id='all' type='radio' name='toggle' value='all' checked='checked'>
+                    <label for='all'>All</label>
+                    <input id='weekday' type='radio' name='toggle' value='weekday'>
+                    <label for='weekday'>Weekday</label>
+                    <input id='weekend' type='radio' name='toggle' value='weekend'>
+                    <label for='weekend'>Weekend</label>
+                </div>
+            </div>
         </div>
         
         <script>
@@ -89,19 +101,35 @@
                 }, 'admin-2-boundaries-dispute');
                 
                 //Connecting an event listener to the slider
-                document.getElementById('slider').addEventListener('input', function(e) {
-                    var hour = parseInt(e.target.value);
-                    //update the map
-                    map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
-                    
-                    //converting 0-23 hour to AMPM format
-                    var ampm = hour >=12 ? 'PM' : 'AM';
-                    var hour12 = hour % 12 ? hour % 12 : 12;
-                    
-                    //update text in the UT
-                    document.getElementById('active-hour').innerText = hour12 + ampm;
+                document.getElementById('slider').addEventListener('in  put', function(e) {
+                        var hour = parseInt(e.target.value);
+                        //update the map
+                        map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
+
+                        //converting 0-23 hour to AMPM format
+                        var ampm = hour >=12 ? 'PM' : 'AM';
+                        var hour12 = hour % 12 ? hour % 12 : 12;
+
+                        //update text in the UT
+                        document.getElementById('active-hour').innerText = hour12 + ampm;
                     
                 });
+                
+                //Adding a "by day" filter
+                document.getElementById('filters').addEventListener('c  hange', function(e) {
+                    var day = e.target.value;
+                    if (day === 'all') {
+                        filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+                    } else if (day === 'weekday') {
+                        filterDay = ['match', ['get', 'Day'], ['Sat', 'Sun'], false, true];
+                    } else if (day === 'weekend') {
+                        filterDay = ['match'. ['get', 'Day'], ['Sat', 'Sun'], true, true];
+                    } else {
+                        console.log('error');
+                    }
+                    map.setFilter('collisions', ['all', filterDay]);
+                });
+                
             });
             
 
