@@ -35,7 +35,7 @@
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(feature.properties.NAME)
+                        layer.bindPopup(feature.properties.NAME);
                     }
                 });
             });
