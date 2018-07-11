@@ -33,11 +33,9 @@
             
             
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
-                var geoJSON = L.geoJSON(data)
+                var geoJSON = L.geoJSON(data).addTo(mymap);
             });
-            
-            geoJSON.addTo(mymap);
-            
+                        
             
             
         </script>
