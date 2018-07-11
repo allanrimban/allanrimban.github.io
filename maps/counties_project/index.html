@@ -29,12 +29,14 @@
                 maxZoom: 18,
                 id: 'mapbox-streets',
                 accessToken: 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug'
-            })
+            }).addTo(mymap);
             
             
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
-                var geoJSON = L.geoJSON(data).addTo(mymap);
+                var geoJSON = L.geoJSON(data);
             });
+            
+            geoJSON.addTo(mymap);
                         
             
             
