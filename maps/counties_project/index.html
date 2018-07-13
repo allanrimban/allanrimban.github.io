@@ -48,6 +48,7 @@
                 
             }
             
+            //The function for the style of the choropleth
             function style(feature) {
                 return {
                     fillColor: getColor(feature.properties.votes_dem),
@@ -64,7 +65,11 @@
             //NOTE: addTo has to be within the getJSON.
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
+                    
+                    //The style is referenced and modified here
                     style: style,
+                    
+                    //Popup info for each polygon
                     onEachFeature: function (feature, layer) {
                           layer.bindPopup(feature.properties.NAME + '<br>' + feature.properties.votes_dem);
                     }
