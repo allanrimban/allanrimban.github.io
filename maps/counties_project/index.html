@@ -65,7 +65,7 @@
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
                     onEachFeature: function (feature, layer) {
-                          layer.bindPopup(feature.properties.2016_election_by_county_Elect_per_dem);
+                          layer.bindPopup(feature.properties.NAME);
                     }
                 
                 geoJSON.addTo(mymap);
