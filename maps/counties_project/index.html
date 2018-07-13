@@ -46,7 +46,7 @@
                        v > 4000 ? '#FED976' :
                                   '#FFEDA0';
                 
-            };\
+            }
             
             function style(feature) {
                 return {
@@ -64,6 +64,7 @@
             //NOTE: addTo has to be within the getJSON.
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
+                    style: style,
                     onEachFeature: function (feature, layer) {
                           layer.bindPopup(feature.properties.NAME + '<br>' + feature.properties.votes_dem);
                     }
