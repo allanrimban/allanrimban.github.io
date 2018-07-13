@@ -67,6 +67,7 @@
                     onEachFeature: function (feature, layer) {
                           layer.bindPopup(feature.properties.NAME);
                     }
+                });
                 
                 geoJSON.addTo(mymap);
             });
