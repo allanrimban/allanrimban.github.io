@@ -34,7 +34,7 @@
             }).addTo(mymap);
             
             
-            /*
+            
             //The palette for the choropleth
             function getColor(v) {
                 return v > 10000 ? '#800026' :
@@ -50,7 +50,7 @@
             
             function style(feature) {
                 return {
-                    fillColor: getColor(feature.properties.2016_election_by_county_Elect_per_dem),
+                    fillColor: getColor(feature.properties.votes_dem),
                     weight: 2,
                     opacity: 1,
                     color: 'white',
@@ -58,14 +58,14 @@
                     fillOpacity: 0.7
                 };
             }            
-            */            
+                        
             
             //Use JQuery's getJSON to fetch an external geojson file.
             //NOTE: addTo has to be within the getJSON.
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
                     onEachFeature: function (feature, layer) {
-                          layer.bindPopup(feature.properties.NAME + '<br>' + feature.properties.per_dem);
+                          layer.bindPopup(feature.properties.NAME + '<br>' + feature.properties.votes_dem);
                     }
                 });
                 
