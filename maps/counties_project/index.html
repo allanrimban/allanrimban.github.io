@@ -33,9 +33,9 @@
                 accessToken: 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug'
             }).addTo(mymap);
             
-            //Use JQuery's getJSON to fetch an external geojson file.
-            //NOTE: addTo has to be within the getJSON.
-            $.getJSON('2016_election_by_county_5m.geojson', 
+            
+            /*
+            //The palette for the choropleth
             function getColor(v) {
                 return v > 10000 ? '#800026' :
                        v > 9000 ? '#BD0026' :
@@ -46,7 +46,7 @@
                        v > 4000 ? '#FED976' :
                                   '#FFEDA0';
                 
-            };
+            };\
             
             function style(feature) {
                 return {
@@ -57,12 +57,17 @@
                     dashArray: '3',
                     fillOpacity: 0.7
                 };
-            };        
-                      
-            function(data) {
+            }            
+            */            
+            
+            //Use JQuery's getJSON to fetch an external geojson file.
+            //NOTE: addTo has to be within the getJSON.
+            $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
-                    style: style
-                });
+                    onEachFeature: function (feature, layer) {
+                          layer.bindPopup(feature.properties.2016_election_by_county_Elect_per_dem);
+                    }
+                
                 geoJSON.addTo(mymap);
             });
             
