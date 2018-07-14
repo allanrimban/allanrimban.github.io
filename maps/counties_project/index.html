@@ -56,7 +56,7 @@
                     fillColor: getColorGop(feature.properties.votes_gop),
                     weight: 1,
                     opacity: 1,
-                    color: 'gray',                    
+                    color: 'black',                    
                     fillOpacity: 1
                 };
             }            
@@ -91,10 +91,18 @@
             //Ultimate style
             function style(feature) {
                 if (feature.properties.votes_dem > feature.properties.votes_gop) {
-                    style = styleDem;
+                    fillColor: getColorDem(feature.properties.votes_dem),
+                    weight: 1,
+                    opacity: 1,
+                    color: 'black',                    
+                    fillOpacity: 1                    
                 } 
                 else { 
-                    style = styleGop
+                    fillColor: getColorGop(feature.properties.votes_gop),
+                    weight: 1,
+                    opacity: 1,
+                    color: 'black',                    
+                    fillOpacity: 1                    
                 };                               
             }
             
