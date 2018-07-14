@@ -123,7 +123,7 @@
                     
                     //Popup info for each polygon
                     onEachFeature: function (feature, layer) {
-                          layer.bindPopup(feature.properties.NAME + '<br>' + feature.properties.votes_dem);
+                          layer.bindPopup('County:' + feature.properties.NAME + '<br>' + 'Dem votes:' + feature.properties.votes_dem + '<br>' + 'GOP votes:' + feature.properties.votes_gop);
                     }
                 });
                 
