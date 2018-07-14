@@ -38,7 +38,7 @@
             //Red palette for the choropleth (NOTE: WHEN CREATING A FUNCTION,
             //NO NEED FOR A SEMI-COLON AT THE END)
             function getColorGop(v) {
-                return v > 10000 ? '#800026' :
+                return v > 100000 ? '#800026' :
                        v > 9000 ? '#BD0026' :
                        v > 8000 ? '#E31A1C' :
                        v > 7000 ? '#FC4E2A' :
@@ -64,7 +64,7 @@
             
             //Blue palette
             function getColorDem(v) {
-                return v > 10000 ? '#08589e':
+                return v > 100000 ? '#08589e':
                        v > 9000 ? '#2b8cbe':
                        v > 8000 ? '#4eb3d3':
                        v > 9000 ? '#7bccc4':
@@ -123,7 +123,7 @@
                     
                     //Popup info for each polygon
                     onEachFeature: function (feature, layer) {
-                          layer.bindPopup('County:' + feature.properties.NAME + '<br>' + 'Dem votes:' + feature.properties.votes_dem + '<br>' + 'GOP votes:' + feature.properties.votes_gop);
+                          layer.bindPopup('County:' + feature.properties.NAME + '<br>' + 'Dem votes:' + feature.properties.votes_dem + <br> + 'GOP votes:' + feature.properties.votes_gop);
                     }
                 });
                 
