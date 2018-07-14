@@ -91,18 +91,18 @@
             //Ultimate style
             function style(feature) {
                 if (feature.properties.votes_dem > feature.properties.votes_gop) {
-                    fillColor: getColorDem(feature.properties.votes_dem),
-                    weight: 1,
-                    opacity: 1,
-                    color: 'black',                    
-                    fillOpacity: 1                    
+                    fillColor: getColorDem(feature.properties.votes_dem);
+                    weight: 1;
+                    opacity: 1;
+                    color: 'black';                    
+                    fillOpacity: 1;                    
                 } 
                 else { 
-                    fillColor: getColorGop(feature.properties.votes_gop),
-                    weight: 1,
-                    opacity: 1,
-                    color: 'black',                    
-                    fillOpacity: 1                    
+                    fillColor: getColorGop(feature.properties.votes_gop);
+                    weight: 1;
+                    opacity: 1;
+                    color: 'black';                   
+                    fillOpacity: 1;                    
                 };                               
             }
             
