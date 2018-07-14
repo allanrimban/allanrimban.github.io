@@ -49,7 +49,7 @@
                 
             }
             
-            /*The function for the style of the choropleth(NOTE: WHEN CREATING A FUNCTION,
+            //The function for the style of the choropleth(NOTE: WHEN CREATING A FUNCTION,
             //NO NEED FOR A SEMI-COLON AT THE END)
             function styleGop(feature) {
                 return {
@@ -60,7 +60,7 @@
                     fillOpacity: 1
                 };
             }            
-            */
+            
             
             //Blue palette
             function getColorDem(v) {
@@ -75,7 +75,7 @@
                 
             }
             
-            /* Style for Dem
+            //Style for Dem
             function styleDem(feature) {
                 return {
                     fillColor: getColorDem(feature.properties.votes_dem),
@@ -86,23 +86,15 @@
                 };
             }
             
-            */
+            
             
             //Ultimate style
             function style(feature {
                             if (feature.properties.votes_dem > feature.properties.votes_gop)
                             {
-                                fillColor: getColorDem(feature.properties.votes_dem),
-                                weight: 1,
-                                opacity: 1,
-                                color: 'black',
-                                fillOpacity: 1
+                                style: styleGop;
                             } else {
-                                fillColor: getColorGop(feature.properties.votes_gop),
-                                weight: 1,
-                                opacity: 1,
-                                color: 'black',
-                                fillOpacity: 1
+                                style: styleDem;
                             }
             })
                         
