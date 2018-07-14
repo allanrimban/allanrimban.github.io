@@ -89,13 +89,15 @@
             
             
             //Ultimate style
-            function style(feature, {
-                if (feature.properties.votes_dem > feature.properties.votes_gop)
-                { style = styleDem;
-                } else 
-                { style = styleGop};                               
-                            }
-            })
+            function style(feature) {
+                if (feature.properties.votes_dem > feature.properties.votes_gop) {
+                    style = styleDem;
+                } 
+                else { 
+                    style = styleGop
+                }                               
+            }
+            
                         
             
             
