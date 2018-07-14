@@ -95,7 +95,7 @@
                 } 
                 else { 
                     style = styleGop
-                }                               
+                };                               
             }
             
                         
@@ -106,6 +106,7 @@
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
                 var geoJSON = L.geoJSON(data, {
                     
+                    //Where the ultimate style comes in
                     style: style,
                     
                     //Popup info for each polygon
