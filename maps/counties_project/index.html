@@ -35,9 +35,9 @@
             
             
             
-            //The palette for the choropleth (NOTE: WHEN CREATING A FUNCTION,
+            //Red palette for the choropleth (NOTE: WHEN CREATING A FUNCTION,
             //NO NEED FOR A SEMI-COLON AT THE END)
-            function getColor(v) {
+            function getColorGop(v) {
                 return v > 10000 ? '#800026' :
                        v > 9000 ? '#BD0026' :
                        v > 8000 ? '#E31A1C' :
@@ -51,16 +51,42 @@
             
             //The function for the style of the choropleth(NOTE: WHEN CREATING A FUNCTION,
             //NO NEED FOR A SEMI-COLON AT THE END)
-            function style(feature) {
+            function styleGop(feature) {
                 return {
-                    fillColor: getColor(feature.properties.votes_dem),
+                    fillColor: getColorGop(feature.properties.votes_gop),
                     weight: 1,
                     opacity: 1,
                     color: 'gray',                    
                     fillOpacity: 1
                 };
             }            
+            
+            
+            //Blue palette
+            function getColorDem(v) {
+                return v > 10000 ? '#08589e':
+                       v > 9000 ? '#2b8cbe':
+                       v > 8000 ? '#4eb3d3':
+                       v > 9000 ? '#7bccc4':
+                       v > 7000 ? '#a8ddb5':
+                       v > 6000 ? '#ccebc5':
+                       v > 5000 ? '#e0f3db':
+                                 '#f7fcf0';
+                
+            }
+            
+            //Style for Dem
+            function styleDem(feature) {
+                return {
+                    fillColor: getColorDem(feature.properties.votes_dem),
+                    weight: 1,
+                    opacity: 1,
+                    color: 'black',                    
+                    fillOpacity: 1
+                };
+            }            
                         
+            
             
             //Use JQuery's getJSON to fetch an external geojson file.
             //NOTE: addTo has to be within the getJSON.
@@ -68,7 +94,11 @@
                 var geoJSON = L.geoJSON(data, {
                     
                     //The style is referenced and modified here
-                    style: style,
+                    if (feature.properties.votes_dem > feature.properties.votes_gop) {
+                    style: styleDem
+                    }   else {
+                    style: styleGop
+                    },
                     
                     //Popup info for each polygon
                     onEachFeature: function (feature, layer) {
