@@ -38,14 +38,13 @@
             //Red palette for the choropleth (NOTE: WHEN CREATING A FUNCTION,
             //NO NEED FOR A SEMI-COLON AT THE END)
             function getColorGop(v) {
-                return v > 100000 ? '#800026' :
-                       v > 9000 ? '#BD0026' :
-                       v > 8000 ? '#E31A1C' :
-                       v > 7000 ? '#FC4E2A' :
-                       v > 6000 ? '#FD8D3C' :
-                       v > 5000 ? '#FEB24C' :
-                       v > 4000 ? '#FED976' :
-                                  '#FFEDA0';
+                return v > 70 ? '#800026' :
+                       v > 50 ? '#BD0026' :
+                       v > 40 ? '#E31A1C' :
+                       v > 30 ? '#FC4E2A' :
+                       v > 20 ? '#FD8D3C' :
+                       v > 10 ? '#FEB24C' :
+                                '#FED976' ;                                  
                 
             }
             
@@ -64,14 +63,13 @@
             
             //Blue palette
             function getColorDem(v) {
-                return v > 100000 ? '#08589e':
-                       v > 9000 ? '#2b8cbe':
-                       v > 8000 ? '#4eb3d3':
-                       v > 9000 ? '#7bccc4':
-                       v > 7000 ? '#a8ddb5':
-                       v > 6000 ? '#ccebc5':
-                       v > 5000 ? '#e0f3db':
-                                 '#f7fcf0';
+                return v > 70 ? '#08589e':
+                       v > 50 ? '#2b8cbe':
+                       v > 40 ? '#4eb3d3':
+                       v > 30 ? '#7bccc4':
+                       v > 20 ? '#a8ddb5':
+                       v > 10 ? '#ccebc5':
+                                '#e0f3db';                               
                 
             }
             
@@ -90,9 +88,9 @@
             
             //Ultimate style
             function style(feature) {
-                if (feature.properties.votes_dem > feature.properties.votes_gop) {
+                if ([feature.properties.per_dem * 100] > [feature.properties.per_gop * 100]) {
                     return {
-                        fillColor: getColorDem(feature.properties.votes_dem),
+                        fillColor: getColorDem(feature.properties.per_dem * 100),
                         weight: 1,
                         opacity: 1,
                         color: 'black',                    
@@ -101,7 +99,7 @@
                 } 
                 else {
                     return {
-                        fillColor: getColorGop(feature.properties.votes_gop),
+                        fillColor: getColorGop(feature.properties.per_gop * 100),
                         weight: 1,
                         opacity: 1,
                         color: 'black',                   
@@ -123,7 +121,7 @@
                     
                     //Popup info for each polygon
                     onEachFeature: function (feature, layer) {
-                          layer.bindPopup('County: ' + feature.properties.NAME + '<br>' + 'Dem votes: ' + feature.properties.votes_dem + '<br>' + 'GOP votes: ' + feature.properties.votes_gop);
+                          layer.bindPopup('County: ' + feature.properties.NAME + '<br>' + 'Percent of Dem votes: ' + [feature.properties.votes_dem * 100] + '<br>' + 'Percent of GOP votes: ' + [feature.properties.votes_gop * 100]);
                     }
                 });
                 
