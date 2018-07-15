@@ -121,7 +121,7 @@
                     
                     //Popup info for each polygon
                     onEachFeature: function (feature, layer) {
-                          layer.bindPopup('County: ' + feature.properties.NAME + '<br>' + 'Percent of Dem votes: ' + [feature.properties.per_dem * 100] + '<br>' + 'Percent of GOP votes: ' + [feature.properties.per_gop * 100]);
+                          layer.bindPopup('County: ' + feature.properties.NAME + feature.properties.state_abbr + '<br>' + 'Percent of Dem votes: ' + [feature.properties.per_dem * 100] + '<br>' + 'Percent of GOP votes: ' + [feature.properties.per_gop * 100]);
                     }
                 });
                 
