@@ -88,7 +88,7 @@
             
             //Ultimate style
             function style(feature) {
-                if ([feature.properties.per_dem * 100] > [feature.properties.per_gop * 100]) {
+                if ((feature.properties.per_dem * 100) > (feature.properties.per_gop * 100) {
                     return {
                         fillColor: getColorDem(feature.properties.per_dem * 100),
                         weight: 1,
