@@ -108,7 +108,27 @@
                 }                               
             }
             
-                        
+            
+            //Highlight the feature as the cursor hovers the feature
+            function highlightFeature(e) {
+                var layer = e.target;
+                
+                layer.setStyle({
+                    weight: 5,
+                    color: '#888',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+                
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                    layer.bringToFront();
+                }
+            }            
+            
+            //When the cursor leaves the feature, reset the style
+            function resetHighlight(e) {
+                geojson.resetStyle(e.target);
+            }
             
             
             //Use JQuery's getJSON to fetch an external geojson file.
