@@ -108,44 +108,65 @@
                 }                               
             }
             
-            
-            //Highlight the feature as the cursor hovers the feature
-            function highlightFeature(e) {
-                var layer = e.target;
-                
-                layer.setStyle({
-                    weight: 5,
-                    color: '#888',
-                    dashArray: '',
-                    fillOpacity: 0.7
-                });
-                
-                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                    layer.bringToFront();
-                }
-            }            
-            
-            //When the cursor leaves the feature, reset the style
-            function resetHighlight(e) {
-                geojson.resetStyle(e.target);
-            }
-            
+
+        
             
             //Use JQuery's getJSON to fetch an external geojson file.
             //NOTE: addTo has to be within the getJSON.
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
-                var geoJSON = L.geoJSON(data, {
+                var geoJSON; 
+                
+                //Highlight the feature as the cursor hovers the feature
+                function highlightFeature(e) {
+                    var layer = e.target;
+
+                    layer.setStyle({
+                        weight: 5,
+                        color: '#888',
+                        dashArray: '',
+                        fillOpacity: 0.7
+                    });
+
+                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
+                    }
+                }            
+
+                
+                //When the cursor leaves the feature, reset the style
+                function resetHighlight(e) {
+                geojson.resetStyle(e.target);
+                }                
+                
+                //Zoom to feature when clicked
+                function zoomToFeature(e) {
+                    map.fitBounds(e.target.getBounds());
+                }                
+                
+                //Use onEachFeature to add the listeners
+                function onEachFeature(feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight
+                        click: zoomToFeature
+                    });
+                }
+                
+                geoJSON = L.geoJSON(data, {
                     
                     //Where the ultimate style comes in
                     style: style,
                     
                     //Popup info for each polygon
-                    onEachFeature: function (feature, layer) {
+                    onEachFeature: onEachFeature
+                    
+                    /* This was the earlier version where an info box pops up when you click on a feature
+                    function (feature, layer) {
                           layer.bindPopup('County: ' + feature.properties.NAME + ', ' + feature.properties.state_abbr + '<br>' + 'Percent of Dem votes: ' + [feature.properties.per_dem * 100] + '<br>' + 'Percent of GOP votes: ' + [feature.properties.per_gop * 100]);
                     }
-                });
-                
-                geoJSON.addTo(mymap);
+                    */
+                    
+                }).addTo(mymap);
             });
             
                                     
