@@ -115,14 +115,15 @@
                 this._div = L.DomUtil.create('div', 'info');
                 this.update();
                 return_this._div;
-            }
+            };
             
             //method that will update the control based on feature properties passed
             
             info.udpate = function (props) {
                 this._div.innerHTML = '<h4>'US Election Result'</h4>' + (props ? '<b>' + props.NAME + '</b><br />' + props.per_dem + '<br />' + props.per_gop);
-            }
+            };
 
+            info.addTo(mymap);                                                           
         
             
             //Use JQuery's getJSON to fetch an external geojson file.
