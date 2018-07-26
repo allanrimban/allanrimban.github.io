@@ -49,7 +49,7 @@
             //control that shows county info
             var info = L.control();
             
-            info.onAdd = function (mymap) {
+            info.onAdd = function (map) {
                 //Create a div with a class of info
                 this._div = L.DomUtil.create('div', 'info');
                 this.update();
