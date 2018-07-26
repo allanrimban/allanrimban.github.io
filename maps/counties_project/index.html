@@ -49,7 +49,7 @@
             //control that shows county info
             var info = L.control();
             
-            info.onAdd = function (map) {
+            info.onAdd = function(mymap) {
                 //Create a div with a class of info
                 this._div = L.DomUtil.create('div', 'info');
                 this.update();
@@ -58,7 +58,7 @@
             
             //method that will update the control based on feature properties passed
             
-            info.udpate = function (props) {
+            info.udpate = function(props) {
                 this._div.innerHTML = '<h4>US Election Result</h4>' + (props ? '<b>' + props.NAME + '</b>' : 'Hover over a county');
             };
 
