@@ -46,7 +46,24 @@
                 accessToken: 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug'
             }).addTo(mymap);
             
+            //control that shows county info
+            var info = L.control();
             
+            info.onAdd = function (mymap) {
+                //Create a div with a class of info
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            
+            //method that will update the control based on feature properties passed
+            
+            info.udpate = function (props) {
+                this._div.innerHTML = '<h4>US Election Result</h4>' + (props ? '<b>' + props.NAME + '</b>' : 'Hover over a county');
+            };
+
+            info.addTo(mymap);                                                           
+                    
             
             //Red palette for the choropleth (NOTE: WHEN CREATING A FUNCTION,
             //NO NEED FOR A SEMI-COLON AT THE END)
@@ -121,24 +138,7 @@
                 }                               
             }
             
-            var info = L.control();
-            
-            info.onAdd = function (mymap) {
-                //Create a div with a class of info
-                this._div = L.DomUtil.create('div', 'info');
-                this.update();
-                return this._div;
-            };
-            
-            //method that will update the control based on feature properties passed
-            
-            info.udpate = function (props) {
-                this._div.innerHTML = '<h4>US Election Result</h4>' + (props ? '<b>' + props.NAME + '</b>' : 'Hover over a county');
-            };
-
-            info.addTo(mymap);                                                           
-        
-            
+                        
             //Use JQuery's getJSON to fetch an external geojson file.
             //NOTE: addTo has to be within the getJSON.
             $.getJSON('2016_election_by_county_5m.geojson', function(data) {
