@@ -206,15 +206,20 @@
             legend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'info legend'),
                     grades = [0, 10, 20, 30, 40, 50, 70],
-                    labels = [];
+                    labels = [],
+                    from, to;
                 
                 //Loop through the legend items
                 for (var i = 0; i < grades.length; i++) {
-                    div.innerHTML +=
-                        '<i style ="background:' + getColorDem(grades[i] + 1) + '"></i> + 
-                        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                    from = grades[i];
+                    to = grades[i + 1];
+                    
+                    labels.push(
+                        '<i style="background:' + getColorDem(from + 1) + 
+                        from + (to ? '&ndash;' + to : '+'));
                 }
                 
+                div.innerHTML = labels.join('<br>');
                 return div;
                 
             };
