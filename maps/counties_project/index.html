@@ -217,7 +217,7 @@
             var legend = L.control({position: 'bottomright'});
             
             legend.onAdd = function (mymap) {
-                var div = L.DomUtil.create('divdem', 'info legend'),
+                var div = L.DomUtil.create('div', 'info legend'),
                     grades = [0, 10, 20, 30, 40, 50, 70],
                     labels = [];
                     
@@ -225,6 +225,8 @@
                 //Loop through the legend items
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML += 
+                        
+                        //These are the legend items in column form!!! You separate them with a "+". Amazing!!!
                         '<i style="background:' + getColorDem(grades[i] + 1) + '"></i> ' + 
                         '<i style="background:' + getColorGop(grades[i] + 1) + '"></i> ' + 
                         grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
