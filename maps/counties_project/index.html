@@ -59,7 +59,7 @@
             //method that will update the control based on feature properties passed
             
             info.update = function(props) {
-                this._div.innerHTML = '<h4>US Election Result</h4>' + (props ? '<b>' + props.NAME + ' ' + props.state_abbr + '</b><br />' + 'Percent GOP: ' + (props.per_gop * 100) + '<br />'+ 'Percent Dem: ' + (props.per_dem * 100): 'Hover over a county');
+                this._div.innerHTML = '<h4>2016 US Election Result</h4>' + (props ? '<b>' + props.NAME + ' ' + props.state_abbr + '</b><br />' + 'Percent GOP: ' + (props.per_gop * 100) + '<br />'+ 'Percent Dem: ' + (props.per_dem * 100): 'Hover over a county');
             };
 
             info.addTo(mymap);                                                           
@@ -200,6 +200,26 @@
                 }).addTo(mymap);
             });
             
+            //The static legend
+            var legend = L.control({position: 'bottomright'});
+            
+            legend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'info legend'),
+                    grades = [0, 10, 20, 30, 40, 50, 70],
+                    labels = [];
+                
+                //Loop through the legend items
+                for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML +=
+                        '<i style ="background:' + getColorDem(grades[i] + 1) + '"></i> + 
+                        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                }
+                
+                return div;
+                
+            };
+            
+            legend.addTo(mymap);
                                     
             
             
