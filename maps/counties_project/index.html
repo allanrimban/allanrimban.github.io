@@ -166,7 +166,7 @@
                 //When the cursor leaves the feature, reset the style
                 function resetHighlight(e) {
                     geoJSON.resetStyle(e.target);
-                    info.update(layer.feature.properties);
+                    info.update();
                 }                
                 
                 //Zoom to feature when clicked
