@@ -217,33 +217,20 @@
             var legend = L.control({position: 'bottomright'});
             
             legend.onAdd = function (mymap) {
-                var divdem = L.DomUtil.create('divdem', 'info legend'),
+                var div = L.DomUtil.create('divdem', 'info legend'),
                     grades = [0, 10, 20, 30, 40, 50, 70],
                     labels = [];
                     
                 
                 //Loop through the legend items
                 for (var i = 0; i < grades.length; i++) {
-                    divdem.innerHTML += 
-                        '<i style="background:' + getColorDem(grades[i] + 1) + '"></i> ' + 
+                    div.innerHTML += 
+                        '<i style="background:' + getColorDem(grades[i] + 1) + getColorGop(grades[i] + 1) + '"></i> ' + 
                         grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
                 }
                 
-                return divdem;
-                
-                
-                var divgop = L.DomUtil.create('divgop', 'info legend'),
-                    grades = [0, 10, 20, 30, 40, 50, 70],
-                    labels = [];
-                
-                for (var i = 0; i < grades.length; i++) {
-                    divgop.innerHTML +=
-                        '<i style="background:' + getColorGop(grades[i] + 1) + '"></i> ' +
-                        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i +1] + '<br>' : '+');
-                }
-                
-                return divgop;
-                
+                return div;
+                    
                 
             };
             
