@@ -52,11 +52,9 @@
         <div id= "mapid"></div>
         <script>
             var mymap = L.map('mapid').setView([39.50, -98.35], 3.5);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            L.tileLayer('https://api.mapbox.com/styles/v1/allanrimban/cjj2gqy52071o2rmil1xscmfk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 15,
-                id: 'mapbox.mapbox-streets-v7',
-                accessToken: 'pk.eyJ1IjoiYWxsYW5yaW1iYW4iLCJhIjoiZWEyYTc5NDhmZjdmYjQzM2I3MDdkN2I4OTQ3MjQyNWEifQ.U2GPM8lv7x--qHhbjNo5Ug'
+                maxZoom: 15                
             }).addTo(mymap);
             
             //control that shows county info
@@ -72,7 +70,7 @@
             //method that will update the control based on feature properties passed
             
             info.update = function(props) {
-                this._div.innerHTML = '<h4>2016 US Election Result</h4>' + (props ? '<b>' + props.NAME + ', ' + props.state_abbr + '</b><br />' + 'Percent GOP: ' + (props.per_gop * 100) + '<br />'+ 'Percent Dem: ' + (props.per_dem * 100): 'Hover over a county') + '<h6>Source: Tony McGovern and his <a href="https://github.com/tonmcg/County_Level_Election_Results_12-16">github page</a>. <br /> He said he got the data from <a href="http://townhall.com">Townhall.com</a></h6>';
+                this._div.innerHTML = '<h4>2016 US Election Result</h4>' + (props ? '<b>' + props.NAME + ', ' + props.state_abbr + '</b><br />' + 'Percent GOP: ' + (props.per_gop.toFixed(2) * 100) + '%' + '<br />'+ 'Percent Dem: ' + (props.per_dem.toFixed(2) * 100) + '%': 'Hover over a county') + '<h6>Source: Tony McGovern and his <a href="https://github.com/tonmcg/County_Level_Election_Results_12-16">github page</a>. <br /> He said he got the data from <a href="http://townhall.com">Townhall.com</a></h6>';
             };
 
             info.addTo(mymap);                                                           
@@ -229,7 +227,9 @@
                         //These are the legend items in column form!!! You separate them with a "+". Amazing!!!
                         '<i style="background:' + getColorDem(grades[i] + 1) + '"></i> ' + 
                         '<i style="background:' + getColorGop(grades[i] + 1) + '"></i> ' + 
-                        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+                        
+                        //I have a vague idea of what this line does
+                        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '%' + '<br>' : '+');
                 }
                 
                 return div;
