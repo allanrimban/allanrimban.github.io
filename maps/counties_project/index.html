@@ -70,7 +70,7 @@
             //method that will update the control based on feature properties passed
             
             info.update = function(props) {
-                this._div.innerHTML = '<h4>2016 US Election Result</h4>' + (props ? '<b>' + props.NAME + ', ' + props.state_abbr + '</b><br />' + 'Percent GOP: ' + (props.per_gop * 100).toFixed(2) + '%' + '<br />'+ 'Percent Dem: ' + (props.per_dem).toFixed(2) * 100) + '%': 'Hover over a county') + '<h6>Source: Tony McGovern and his <a href="https://github.com/tonmcg/County_Level_Election_Results_12-16">github page</a>. <br /> He said he got the data from <a href="http://townhall.com">Townhall.com</a></h6>';
+                this._div.innerHTML = '<h4>2016 US Election Result</h4>' + (props ? '<b>' + props.NAME + ', ' + props.state_abbr + '</b><br />' + 'Percent GOP: ' + (props.per_gop * 100).toFixed(2) + '%' + '<br />'+ 'Percent Dem: ' + (props.per_dem) * 100).toFixed(2) + '%': 'Hover over a county') + '<h6>Source: Tony McGovern and his <a href="https://github.com/tonmcg/County_Level_Election_Results_12-16">github page</a>. <br /> He said he got the data from <a href="http://townhall.com">Townhall.com</a></h6>';
             };
 
             info.addTo(mymap);                                                           
