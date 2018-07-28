@@ -244,12 +244,15 @@ layout: default
             };
             
             legend.addTo(mymap);
-                                    
             
+            //How to write the last modified? I got it from herehttp://www.web-source.net/web_design_tips/last_modified_date_web_page_script.htm#.W1wbZ9VKjIU
+            document.write("This page was last modified on: " + document.lastModified + "");
             
         </script>
         <h2><u>About this map</u></h2>
-        <p>In this map, I used Leaflet.js to visualize the election data. To fetch the election data, I used JQuery. 
+        <p>Call this my first official web map. It took me about 15 days to make this and I still don't have a full grasp of the
+            lines of code that I used here. I borrowed heavily from the Leaflet tutorial. 
+            In this map, I used Leaflet.js to visualize the election data. To fetch the election data, I used JQuery. 
             Here are some more info about this map:</p>
         <ul>
             <li>I obtained the data from Tom McGovern's github page, data that he
