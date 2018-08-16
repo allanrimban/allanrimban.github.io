@@ -15,11 +15,14 @@
             .attr('width','800px')
             .attr('height', '800px')
             .style('background-color','black');
-    
+            
+            d3.json("Drug_Induced_Deaths_Per_County.json", function(data) {
+                console.log(data);
+            });
         
                     
             svg.selectAll("circle")
-            .data(drugDeaths)
+            .data(data)
             .enter().append('circle')
             .attr("cx", function(d) {return d.LONG})
             .attr("cy", function(d) {return d.LAT})
