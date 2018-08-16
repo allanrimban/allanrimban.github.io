@@ -14,16 +14,19 @@
             .append('svg')
             .attr('width','800px')
             .attr('height', '800px');
+            .style('background-color','black');
             
             //Temp data
             var drugDeaths = [{LONG: 100, LAT: 100}, {LONG: 200, LAT: 200}]
-                                    
+            
+                        
             svg.selectAll("circle")
             .data(drugDeaths)
             .enter().append('circle')
             .attr("cx", function(d) {return d.LONG})
             .attr("cy", function(d) {return d.LAT})
-            .attr("fill", "yellow");
+            .attr("fill", "red")
+            .attr("r", 2);
         
         </script>
     </body>
