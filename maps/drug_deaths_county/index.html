@@ -15,11 +15,9 @@
             .attr('width','800px')
             .attr('height', '800px')
             .style('background-color','black');
-            
-            //Temp data
-            var drugDeaths = [{LONG: 100, LAT: 100}, {LONG: 200, LAT: 200}]
-            
-                        
+    
+        
+                    
             svg.selectAll("circle")
             .data(drugDeaths)
             .enter().append('circle')
