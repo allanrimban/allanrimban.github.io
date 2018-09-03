@@ -27,7 +27,7 @@
                 .projection(albersProjection);
            
             drugs.selectAll('path')
-                .data(drugDeaths.features)
+                .data(drugDeaths)
                 .enter()
                 .append('path')
                 .attr('fill', '#900')
