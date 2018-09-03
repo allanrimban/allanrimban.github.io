@@ -16,7 +16,7 @@
                                 .attr('width', width)
                                 .attr('height', height);
                                     
-            
+            var drugs = svg.selectAll('g')
             
             var albersProjection = d3.geoAlbers()
                 .scale(1000)
@@ -25,27 +25,21 @@
             
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
-            
-            var bars = svg.selectAll('g')
+           
+            drugs.selectAll('path')
                 .data(drugDeaths.features)
-                .enter()     
-                //changed this from 'path' to 'rect' to display bars
-                .append('rect')
+                .enter()
+                .append('path')
+                .attr('fill', 'red')
+                .attr('fill', '#900')
+                .attr('d', geoPath);
             
                 //added attributes for x and y of the rectangles
-                .attr('x', function(d) {return d.LONG})
-                .attr('y', function(d) {return d.LAT})
-                .attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
-                .attr('width', 1)
-                .attr('fill', 'red')
-                .attr('fill', '#900');
-                
-                //looks like no need for a .attr('d', geoPath);
+                //.attr('x', function(d) {return d.LONG})
+                //.attr('y', function(d) {return d.LAT})
+                //.attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
+                //.attr('width', 1)
             
-                                      
-
-              
-                    
         </script>
     </body>
 
