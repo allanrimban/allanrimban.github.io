@@ -16,7 +16,7 @@
                                 .attr('width', width)
                                 .attr('height', height);
                                     
-            var drugs = svg.append('g')
+            var drugs = svg.append('g');
             
             var albersProjection = d3.geoAlbers()
                 .scale(1000)
@@ -33,13 +33,7 @@
                 .attr('fill', 'red')
                 .attr('stroke', '#ccc')
                 .attr('d', geoPath);
-            
-                //added attributes for x and y of the rectangles
-                //.attr('x', function(d) {return d.LONG})
-                //.attr('y', function(d) {return d.LAT})
-                //.attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
-                //.attr('width', 1)
-            
+                        
         </script>
     </body>
 
