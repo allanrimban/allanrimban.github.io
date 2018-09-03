@@ -16,7 +16,7 @@
                                 .attr('width', width)
                                 .attr('height', height);
                                     
-            var drugs = svg.selectAll('g')
+            var drugs = svg.append('g')
             
             var albersProjection = d3.geoAlbers()
                 .scale(1000)
