@@ -26,7 +26,7 @@
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
            
-            drug = drugs.selectAll('g')
+            var drug = drugs.selectAll('g')
                 .data(drugDeaths)
                 .enter()
                 .append('g')
