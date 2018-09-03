@@ -35,7 +35,7 @@
                 //.attr('stroke', '#999')
                 //.attr('d', geoPath)            
                 .append('rect')
-                .attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths * 1000})
+                .attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
                 .attr('width', 3)
                 .attr('y', function(d) {return -(d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths)})
                 .style('fill', 'green')
