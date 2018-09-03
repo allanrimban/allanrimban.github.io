@@ -30,8 +30,8 @@
                 .data(drugDeaths)
                 .enter()
                 .append('g')
-                .attr('class', 'bars');
-                //.attr('transform', function(d) {return 'translate(' + albersProjection((d.LONG, d.LAT)) + ')';});
+                .attr('class', 'bars')
+                .attr('transform', function(d) {return 'translate(' + projection(d.coordinates) + ')';});
                 //.attr('fill', '#900')
                 //.attr('stroke', '#999')
                 //.attr('d', geoPath)            
