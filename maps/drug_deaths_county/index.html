@@ -27,7 +27,7 @@
                 .projection(albersProjection);
            
             bars = drugs.selectAll('g')
-                .data(drugDeaths)
+                .data(drugDeaths.features)
                 .enter()
                 .append('g')
                 .attr('class', 'bars')
