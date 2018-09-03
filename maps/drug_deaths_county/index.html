@@ -26,10 +26,9 @@
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
             
-            var drugs = svg.selectAll('g')
-                .data(drugDeaths)
-                .enter()
-            
+            var bars = svg.selectAll('g')
+                .data(drugDeaths.features)
+                .enter()     
                 //changed this from 'path' to 'rect' to display bars
                 .append('rect')
             
