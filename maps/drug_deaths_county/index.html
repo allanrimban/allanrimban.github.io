@@ -17,7 +17,7 @@
                                 .attr('width', width)
                                 .attr('height', height);
                                     
-            var drugs = svg.append('g');
+            //var drugs = svg.append('g');
             
             var albersProjection = d3.geoAlbers()
                 .scale(1000)                
@@ -26,7 +26,7 @@
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
            
-            bars = drugs.selectAll('g')
+            bars = svg.selectAll('g')
                 .data(drugDeaths)
                 .enter()
                 .append('g')
