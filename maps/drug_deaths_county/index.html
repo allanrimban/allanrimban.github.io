@@ -16,9 +16,7 @@
                                 .append('svg')
                                 .attr('width', width)
                                 .attr('height', height);
-                                    
-            //var drugs = svg.append('g');
-            
+                                                
             var albersProjection = d3.geoAlbers()
                 .scale(1000)                
                 .translate([width/2, height/2]);
@@ -26,19 +24,17 @@
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
            
-            bars = svg.selectAll('g')
+            bars = svg.selectAll('rect')
                 .data(drugDeaths)
                 .enter()
-                .append('g')
-                .attr('class', 'bars')
-                .attr('transform', function(d) {return 'translate(' + projection(d.coordinates) + ')';});
-                //.attr('fill', '#900')
-                //.attr('stroke', '#999')
-                //.attr('d', geoPath)            
-            
-            bars.append('rect')
+                .append('rect')                
+                //.attr('class', 'bars')
+                //.attr('transform', function(d) {return 'translate(' + albersProjection(d.coordinates) + ')';});
+                            
+            //bars.append('rect')
+                .attr('d', geoPath)
                 .attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
-                .attr('width', 3)
+                .attr('width', 10)
                 .attr('y', function(d) {return -(d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths)})
                 .attr('class', 'bars')
                 .style('fill', 'green')
