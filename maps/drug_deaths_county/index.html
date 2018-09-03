@@ -26,7 +26,7 @@
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
            
-            var drug = drugs.selectAll('g')
+            var bars = drugs.selectAll('g')
                 .data(drugDeaths)
                 .enter()
                 .append('g')
@@ -36,7 +36,7 @@
                 //.attr('stroke', '#999')
                 //.attr('d', geoPath)            
             
-            drug.append('rect')
+            bars.append('rect')
                 .attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
                 .attr('width', 3)
                 .attr('y', function(d) {return -(d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths)})
