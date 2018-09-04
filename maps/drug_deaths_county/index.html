@@ -23,23 +23,42 @@
             
             var geoPath = d3.geoPath()
                 .projection(albersProjection);
-           
-            bars = svg.selectAll('rect')
-                .data(drugDeaths)
-                .enter()
-                .append('rect')                
-                //.attr('class', 'bars')
-                //.attr('transform', function(d) {return 'translate(' + albersProjection(d.coordinates) + ')';});
-                            
-            //bars.append('rect')
-                .attr('d', geoPath)
-                .attr('height', function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
+            
+            sampleData = [{"name": "San Francisco", "coordinates": [-122.417,37.783], "barheight": 100},
+              {"name": "Sacramento", "coordinates": [-121.505,40.488], "barheight": 30},
+              {"name": "Portland", "coordinates": [-122.682,45.52], "barheight": 50}              
+              ]
+
+            bars = svg.selectAll("g")
+              .data(sampleData)
+              .enter()
+              .append("g")
+              .attr("class", "bars")
+              .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
+
+            bars.append("rect")			      
+                .attr('height',  function(d) {return d.barheight})
                 .attr('width', 10)
-                .attr('y', function(d) {return -(d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths)})
-                .attr('class', 'bars')
-                .style('fill', 'green')
-                .style('stroke', 'white')
-                .style('stroke-width', 0.1);
+                .attr('y', function(d) {return -(d.barheight)})
+                .attr("class", "bars")
+                .style("fill", "purple")
+                .style("stroke", "white")
+                .style("stroke-width", 2);
+
+            bars.append("text")
+                .text(function(d) {return d.name})
+                .attr("x", -10)
+                .attr("y", 18);
+
+            bars.transition().duration(500).style("opacity", 1)
+
+            svg.selectAll("text.statenameshalo").data(["Oregon","California"]).enter().append("text").text(function(d) {return d}).attr("x", 390).attr("y", function(d,i) {return 328 + (i * 33)}).attr("class","statenameshalo").attr("transform", "rotate(-15)")
+            svg.selectAll("text.statenames").data(["Oregon","California"]).enter().append("text").text(function(d) {return d}).attr("x", 390).attr("y", function(d,i) {return 328 + (i * 33)}).attr("class","statenames").attr("transform", "rotate(-15)")
+            });
+
+            d3.select(self.frameElement).style("height", height + "px");                            
+           
+
             
         </script>
     </body>
