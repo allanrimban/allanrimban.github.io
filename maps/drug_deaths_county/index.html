@@ -10,8 +10,7 @@
         <script>
             
             var width = 960, height = 960;
-            scaleVal = 12500;
-            distanceVal = 1.11;
+            scaleVal = 12500;            
             rotateVal = 30;
             clipVal = 15;
             
@@ -20,8 +19,7 @@
                                 .attr('width', width)
                                 .attr('height', height);
 
-            projection = d3.geoAlbers()
-              .distance(distanceVal)
+            projection = d3.geoAlbers()              
               .scale(scaleVal)
               .rotate([121.00, -35.50, 20])
               .center([-4, 5])
