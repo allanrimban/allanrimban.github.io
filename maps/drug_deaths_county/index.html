@@ -9,20 +9,27 @@
     <body>        
         <script>
             
-            var width = 700,
-                height = 500;
+            var width = 960, height = 960;
+            scaleVal = 12500;
+            distanceVal = 1.11;
+            rotateVal = 30;
+            clipVal = 15;
             
             var svg = d3.select('body')
                                 .append('svg')
                                 .attr('width', width)
                                 .attr('height', height);
-                                                
-            var albersProjection = d3.geoAlbers()
-                .scale(1000)                
-                .translate([width/2, height/2]);
+
+            projection = d3.geoAlbers()
+              .distance(distanceVal)
+              .scale(scaleVal)
+              .rotate([121.00, -35.50, 20])
+              .center([-4, 5])
+              .tilt(60)
+              .clipAngle(clipVal);                                                
             
             var geoPath = d3.geoPath()
-                .projection(albersProjection);
+                .projection(projection);
             
             sampleData = [{"name": "San Francisco", "coordinates": [-122.417,37.783], "barheight": 100},
               {"name": "Sacramento", "coordinates": [-121.505,40.488], "barheight": 30},
@@ -52,9 +59,6 @@
 
             bars.transition().duration(500).style("opacity", 1)
 
-            svg.selectAll("text.statenameshalo").data(["Oregon","California"]).enter().append("text").text(function(d) {return d}).attr("x", 390).attr("y", function(d,i) {return 328 + (i * 33)}).attr("class","statenameshalo").attr("transform", "rotate(-15)")
-            svg.selectAll("text.statenames").data(["Oregon","California"]).enter().append("text").text(function(d) {return d}).attr("x", 390).attr("y", function(d,i) {return 328 + (i * 33)}).attr("class","statenames").attr("transform", "rotate(-15)")
-            });
 
             d3.select(self.frameElement).style("height", height + "px");                            
            
