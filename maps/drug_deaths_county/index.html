@@ -4,7 +4,7 @@
         <meta charset='utf-8'>
         <script src="https://d3js.org/d3.v5.js"></script>
         <script src="https://d3js.org/topojson.v0.min.js"></script>
-        <script src="Drug_Induced_Deaths_Per_County.js"></script>
+        <script src="Drug_Induced_Deaths_Per_County_Simple.js"></script>
     </head>
     <body>        
         <script>
@@ -27,7 +27,7 @@
             var geoPath = d3.geoPath()
                 .projection(projection);
             
-            sampleData = drugDeaths
+            //sampleData = drugDeaths
               /*   
               [{"name": "San Francisco", "coordinates": [-122.417,37.783], "barheight": 100},
               {"name": "Sacramento", "coordinates": [-121.505,40.488], "barheight": 30},
@@ -35,16 +35,16 @@
               */
               
             bars = svg.selectAll("g")
-              .data(sampleData)
+              .data(drugDeaths)
               .enter()
               .append("g")
               .attr("class", "bars")
               .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
 
             bars.append("rect")			      
-                .attr('height',  function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
+                .attr('height',  function(d) {return d.Deaths})
                 .attr('width', 10)
-                .attr('y', function(d) {return -(d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths)})
+                .attr('y', function(d) {return -(d.Deaths)})
                 .attr("class", "bars")
                 .style("fill", "purple")
                 .style("stroke", "white")
