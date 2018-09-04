@@ -12,7 +12,6 @@
             var width = 960, height = 960;
             scaleVal = 12500;            
             rotateVal = 30;
-            clipVal = 15;
             
             var svg = d3.select('body')
                                 .append('svg')
@@ -23,8 +22,7 @@
               .scale(scaleVal)
               .rotate([121.00, -35.50, 20])
               .center([-4, 5])
-              .tilt(60)
-              .clipAngle(clipVal);                                                
+                                               
             
             var geoPath = d3.geoPath()
                 .projection(projection);
