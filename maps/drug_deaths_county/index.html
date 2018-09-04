@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset='utf-8'>
-        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="https://d3js.org/d3.v5.js"></script>
         <script src="https://d3js.org/topojson.v0.min.js"></script>
         <script src="Drug_Induced_Deaths_Per_County.js"></script>
     </head>
@@ -21,7 +21,7 @@
             projection = d3.geoAlbers()              
               .scale(scaleVal)
               .rotate([121.00, -35.50, 20])
-              .center([-4, 5])
+              .center([-4, 5]);
                                                
             
             var geoPath = d3.geoPath()
