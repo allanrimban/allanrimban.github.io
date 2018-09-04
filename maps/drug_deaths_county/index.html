@@ -39,12 +39,12 @@
               .enter()
               .append("g")
               .attr("class", "bars")
-              .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
+              .attr("transform", function(d) {return "translate(" + projection(d.properties.coordinates) + ")";});
 
             bars.append("rect")			      
-                .attr('height',  function(d) {return d.Deaths})
+                .attr('height',  function(d) {return d.properties.Deaths})
                 .attr('width', 10)
-                .attr('y', function(d) {return -(d.Deaths)})
+                .attr('y', function(d) {return -(d.properties.Deaths)})
                 .attr("class", "bars")
                 .style("fill", "purple")
                 .style("stroke", "white")
