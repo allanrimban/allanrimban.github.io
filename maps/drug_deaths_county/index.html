@@ -27,11 +27,13 @@
             var geoPath = d3.geoPath()
                 .projection(projection);
             
-            sampleData = [{"name": "San Francisco", "coordinates": [-122.417,37.783], "barheight": 100},
+            sampleData = drugDeaths
+              /*   
+              [{"name": "San Francisco", "coordinates": [-122.417,37.783], "barheight": 100},
               {"name": "Sacramento", "coordinates": [-121.505,40.488], "barheight": 30},
               {"name": "Portland", "coordinates": [-122.682,45.52], "barheight": 50}              
-              ]
-
+              */
+              
             bars = svg.selectAll("g")
               .data(sampleData)
               .enter()
@@ -40,18 +42,20 @@
               .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
 
             bars.append("rect")			      
-                .attr('height',  function(d) {return d.barheight})
+                .attr('height',  function(d) {return d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths})
                 .attr('width', 10)
-                .attr('y', function(d) {return -(d.barheight)})
+                .attr('y', function(d) {return -(d.Drug_Induced_Deaths_Per_County_No_Metadata_Deaths)})
                 .attr("class", "bars")
                 .style("fill", "purple")
                 .style("stroke", "white")
                 .style("stroke-width", 2);
 
+            /*
             bars.append("text")
                 .text(function(d) {return d.name})
                 .attr("x", -10)
                 .attr("y", 18);
+            */
 
             bars.transition().duration(500).style("opacity", 1)
 
