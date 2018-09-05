@@ -5,6 +5,13 @@
         <script src="https://d3js.org/d3.v5.js"></script>
         <script src="https://d3js.org/topojson.v0.min.js"></script>
         <script src="Drug_Deaths_County_Simple_JSON.js"></script>
+        <style>
+            .bars {
+                fill: green;
+                stroke: white;
+                stroke-width: 1;
+                }
+        </style>
     </head>
     <body>        
         <script>
@@ -32,16 +39,13 @@
               .enter()
               .append("g")
               .attr("class", "bars")
-              .attr("transform", function(d) {return "translate(" + projection(d.coordinates) + ")";});
+              .attr("transform", function(d) {return "translate(" + projection([d.LONG, d.LAT]) + ")";});
 
             bars.append("rect")			      
                 .attr('height',  function(d) {return d.Deaths})
-                .attr('width', 1)
+                .attr('width', 2)
                 .attr('y', function(d) {return -(d.Deaths)})
-                .attr("class", "bars")
-                .style("fill", "green")
-                .style("stroke", "white")
-                .style("stroke-width", 2);
+                .attr("class", "bars");
 
            
             bars.transition().duration(500).style("opacity", 1)
