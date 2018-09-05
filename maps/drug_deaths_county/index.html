@@ -17,7 +17,7 @@
         <script>
             
             var width = 960, height = 960;
-            scaleVal = 500;            
+            scaleVal = 400;            
             rotateVal = 30;
             
             var svg = d3.select('body')
@@ -43,7 +43,7 @@
 
             bars.append("rect")			      
                 .attr('height',  function(d) {return d.Deaths})
-                .attr('width', 1)
+                .attr('width', 1.4)
                 .attr('y', function(d) {return -(d.Deaths)})
                 .attr("class", "bars");
 
